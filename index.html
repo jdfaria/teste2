@@ -912,7 +912,7 @@ const Page11Certificate = () => {
 
         setIsDownloading(true);
         
-        html2canvas(certificateRef.current, { scale: 2 }).then((canvas) => {
+        html2canvas(certificateRef.current, { scale: 2, useCORS: true }).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.download = `Certificado-${name.replace(/\s/g, '_') || 'Protecao_Dados'}.png`;
