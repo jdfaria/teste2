@@ -912,7 +912,7 @@ const Page11Certificate = () => {
 
         setIsDownloading(true);
         
-        html2canvas(certificateRef.current, { scale: 2, useCORS: true }).then((canvas) => {
+        html2canvas(certificateRef.current, { useCORS: true }).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.download = `Certificado-${name.replace(/\s/g, '_') || 'Protecao_Dados'}.png`;
@@ -921,8 +921,8 @@ const Page11Certificate = () => {
             link.click();
             document.body.removeChild(link);
         }).catch((error) => {
-            console.error("Ocorreu um erro ao descarregar o certificado:", error);
-            alert("Não foi possível descarregar o certificado. Por favor, tente novamente.");
+            console.error("Ocorreu um erro ao gerar o certificado:", error);
+            alert("Não foi possível descarregar o certificado. Isto pode ser devido a um bloqueador de scripts ou a restrições do navegador. Tente noutro navegador ou desative as extensões de bloqueio.");
         }).finally(() => {
             setIsDownloading(false);
         });
